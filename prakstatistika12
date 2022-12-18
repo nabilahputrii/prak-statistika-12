@@ -1,0 +1,16 @@
+df_nabilah=read.delim("clipboard")
+head(df_nabilah)
+model_reg=lm(df_nabilah$y~df_nabilah$x)
+summary(model_reg)
+
+#Latihan kedua(1)
+df_nabilah=read.delim("clipboard")
+df_nabilah$Brick_dummy<-ifelse(df_nabilah$Brick=="YES", 1,0)
+df_nabilah$N_dummy1<-ifelse(df_nabilah$Neighborhood=="West", 1,0)
+df_nabilah$N_dummy2<-ifelse(df_nabilah$Neighborhood=="North", 1,0)
+model=lm(df_nabilah$Price~df_nabilah$SqFt+df_nabilah$Bedrooms+df_nabilah$Brick_dummy+df_nabilah$N_dummy1+df_nabilah$N_dummy2)
+summary(model)
+
+#latihan kedua (2)
+by(df_nabilah$Price, df_nabilah$Neighborhood, mean)
+by(df_nabilah$Price, df_nabilah$Brick, mean)
